@@ -14,7 +14,7 @@
               </div>
             </header>
             <article class="content" v-html="markdownRender(detail.content)"></article>
-            <div id="SOHUCS" sid="cytppmhxq"></div>
+            <div id="SOHUCS" :sid="detail._id"></div>
           </div>
         </div>
       </template>
