@@ -20,7 +20,7 @@
       </template>
       <template slot="right">
         <SideCard title="热门推荐" :data="recommendList" v-fixed="104">
-          <template slot="articles" scope="props">
+          <template slot="articles" slot-scope="props">
             <dd>
               <a :href="props.id" v-ripple>
                 <h3>{{props.title}}</h3>

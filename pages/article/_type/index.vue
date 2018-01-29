@@ -29,7 +29,7 @@
               <input type="text" placeholder="搜索文章">
             </div> -->
             <SideCard title="标签" row="multi" :data="tagList">
-              <template slot="tags" scope="props">
+              <template slot="tags" slot-scope="props">
                 <dd class="dd-tags">
                   <a :href="`${curType}/${props.tagName}`" v-ripple>
                     <h3>{{ props.tagName }}</h3>
