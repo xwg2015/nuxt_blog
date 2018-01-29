@@ -8,9 +8,9 @@
       <li><a href="/project/list" ref="project">项目</a></li>
       <li class="resume">
         <a href="javascript:;">简历</a>
-        <div class="tip">目前在职</div>
+        <div class="tip" :class="[{ 'mod-shadow': isOther }]">目前在职</div>
       </li>
-      <li><a href="http://xiongwengang.xyz/admin" target="_blank">传说后台</a></li>
+      <li><a href="http://admin.xiongwengang.xyz" target="_blank">传说后台</a></li>
     </ul>
   </section>
 </template>

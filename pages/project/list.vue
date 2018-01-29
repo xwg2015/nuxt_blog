@@ -35,8 +35,18 @@
       Loading
     },
     asyncData ({ params, error }) {
-      return axios.get('http://xiongwengang.xyz/api/blog/getProject?pageCurrent=1&pageSize=5').then((res) => {
-        return { list: res.data.data }
+      let opts = {
+        baseUrl: 'http://admin.xiongwengang.xyz/api/blog/getProject',
+        pageCurrent: 1,
+        pageSize: 5
+      }
+      return axios.get(`${opts.baseUrl}?pageCurrent=${opts.pageCurrent}&pageSize=${opts.pageSize}`).then((res) => {
+        return {
+          list: res.data.data,
+          baseUrl: opts.baseUrl,
+          pageCurrent: opts.pageCurrent,
+          pageSize: opts.pageSize
+        }
       }).catch((e) => {
         error({ statusCode: 404, message: '接口请求报错！' })
       })
@@ -51,8 +61,6 @@
     },
     data () {
       return {
-        curPage: 1,
-        pageSize: 5,
         loading: false,
         hasMore: true
       }
@@ -63,14 +71,14 @@
         let srcollTop = document.body.scrollTop || document.documentElement.scrollTop
         let clientHeight = window.innerHeight
         let scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight
-        let page = this.curPage + 1
+        let page = this.pageCurrent + 1
         setTimeout(() => {
           if (srcollTop + clientHeight === scrollHeight && this.hasMore) {
             this.loading = true
-            axios.get(`http://xiongwengang.xyz/api/blog/getProject?pageCurrent=${page}&pageSize=${this.pageSize}`).then((res) => {
+            axios.get(`${this.baseUrl}?pageCurrent=${page}&pageSize=${this.pageSize}`).then((res) => {
               if (res.data.data.length > 0) {
                 this.hasMore = true
-                this.curPage = page
+                this.pageCurrent = page
                 this.list = this.list.concat(res.data.data)
               } else {
                 this.hasMore = false
@@ -84,7 +92,7 @@
       computeStyle () {
         let items = document.querySelectorAll('.item')
         items.forEach((val, idx, arr) => {
-          val.style.left = -100 * (idx + 1) + 'px'
+          val.style.left = -200 * (idx + 1) + 'px'
         })
       }
     }

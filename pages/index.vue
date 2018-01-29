@@ -43,7 +43,7 @@
       VFooter
     },
     asyncData ({ params, error }) {
-      return axios.get('http://xiongwengang.xyz/api/blog/getIndex').then((res) => {
+      return axios.get(`http://admin.xiongwengang.xyz/api/blog/getIndex`).then((res) => {
         return {
           articleList: res.data.articleData,
           projectList: res.data.projectData

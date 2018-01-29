@@ -59,9 +59,12 @@
       BackTop
     },
     async asyncData ({ params, error }) {
+      let opts = {
+        baseUrl: 'http://admin.xiongwengang.xyz/api/blog/'
+      }
       let [detailRes, recommendRes] = await Promise.all([
-        axios.get(`http://xiongwengang.xyz/api/blog/getArticleDetail?id=${params.id}`),
-        axios.get(`http://xiongwengang.xyz/api/blog/getArticleRecommend?id=${params.id}`)
+        axios.get(`${opts.baseUrl}getArticleDetail?id=${params.id}`),
+        axios.get(`${opts.baseUrl}getArticleRecommend?id=${params.id}`)
       ]).catch((e) => {
         error({ statusCode: 404, message: '接口请求报错！' })
       })

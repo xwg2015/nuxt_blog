@@ -70,7 +70,7 @@
     },
     asyncData ({ params, error }) {
       let opts = {
-        baseUrl: 'http://xiongwengang.xyz/api/blog/getArticle',
+        baseUrl: 'http://admin.xiongwengang.xyz/api/blog/getArticle',
         pageCurrent: 1,
         pageSize: 5
       }
@@ -80,6 +80,9 @@
         return {
           list: res.data.data,
           tagList: res.data.tags,
+          baseUrl: opts.baseUrl,
+          pageCurrent: opts.pageCurrent,
+          pageSize: opts.pageSize,
           curType: params.type,
           curTag: params.Tag
         }
@@ -99,7 +102,6 @@
     },
     data () {
       return {
-        curPage: 1,
         loading: false,
         hasMore: true
       }
@@ -109,14 +111,14 @@
         let srcollTop = document.body.scrollTop || document.documentElement.scrollTop
         let clientHeight = window.innerHeight
         let scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight
-        let page = this.curPage + 1
+        let page = this.pageCurrent + 1
         setTimeout(() => {
           if (srcollTop + clientHeight === scrollHeight && this.hasMore) {
             this.loading = true
-            axios.get(`http://xiongwengang.xyz/api/blog/getArticle?pageCurrent=${page}&pageSize=5&type=${this.curType}`).then((res) => {
+            axios.get(`${this.baseUrl}?pageCurrent=${page}&pageSize=${this.pageSize}&type=${this.curType}`).then((res) => {
               if (res.data.data.length > 0) {
                 this.hasMore = true
-                this.curPage = page
+                this.pageCurrent = page
                 this.list = this.list.concat(res.data.data)
               } else {
                 this.hasMore = false
@@ -136,6 +138,7 @@
 
 <style lang="sass">
   @import '~assets/sassCore/_function.scss'
+
   .page-article-list
     @include display-flex()
     @include flex-direction()
