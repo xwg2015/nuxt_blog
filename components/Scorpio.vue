@@ -85,9 +85,9 @@
       }
     },
     mounted () {
-      // TODO: safari浏览器元素scale动画不围绕中心点bug
+      // TODO: safari浏览器和IOS移动端设备上 元素scale动画不围绕中心点bug
       // alert(navigator.userAgent)
-      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+      if ((navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) || (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent))) {
       } else {
         this.twinkle()
       }
