@@ -35,7 +35,7 @@
     background-color: $bgColor
     min-width: $minWidth
     color: $themeColor
-  html, body, #__nuxt
+  html, body, #__nuxt, #__layout
     height: 100%
   img
     max-width: 100%

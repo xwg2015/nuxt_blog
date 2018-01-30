@@ -14,7 +14,7 @@
                 <h3 class="title"><a :href="`/article/detail/${item._id}`" target="_blank">{{  item.title }}</a></h3>
                 <div class="about">
                   <p class="text">{{ item.about }}</p>
-                  <div class="img" :style="`background-image: url(//xiongwengang.xyz${item.cover})`"></div>
+                  <div class="img" v-lazy:background-image="`//xiongwengang.xyz${item.cover}`"></div>
                 </div>
                 <Tags :tags="item.tags"></Tags>
               </li>
@@ -199,7 +199,6 @@
         margin-top: -$baseImgHeight * 3
         background-position: center
         background-size: cover
-        background-color: $themeColor
         border-radius: $baseRadius
     .right
       .search

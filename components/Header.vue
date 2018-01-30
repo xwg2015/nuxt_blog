@@ -23,8 +23,10 @@
       Logo
     },
     props: {
-      isOther: Boolean,
-      default: false
+      isOther: {
+        type: Boolean,
+        default: false
+      }
     },
     mounted () {
       if (this.isOther) {

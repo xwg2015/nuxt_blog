@@ -85,7 +85,12 @@
       }
     },
     mounted () {
-      this.twinkle()
+      // TODO: safari浏览器元素scale动画不围绕中心点bug
+      // alert(navigator.userAgent)
+      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+      } else {
+        this.twinkle()
+      }
     },
     methods: {
       twinkle () {
@@ -126,32 +131,32 @@
       stroke-dashoffset: 0
   @include keyframes(twinkle1)
     0%
-      transform: scale(0.6)
+      @include transform(scale(0.6))
       @include opacity(60)
     50%
-      transform: scale(1.0)
+      @include transform(scale(1.0))
       @include opacity(100)
     100%
-      transform: scale(0.6)
+      @include transform(scale(0.6))
       @include opacity(60)
   @include keyframes(twinkle2)
     0%
-      transform: scale(0.7)
+      @include transform(scale(0.7))
       @include opacity(60)
     50%
-      transform: scale(1.1)
+      @include transform(scale(1.1))
       @include opacity(100)
     100%
-      transform: scale(0.7)
+      @include transform(scale(0.7))
       @include opacity(60)
   @include keyframes(twinkle3)
     0%
-      transform: scale(0.8)
+      @include transform(scale(0.8))
       @include opacity(60)
     50%
-      transform: scale(1.2)
+      @include transform(scale(1.2))
       @include opacity(100)
     100%
-      transform: scale(0.8)
+      @include transform(scale(0.8))
       @include opacity(60)
 </style>

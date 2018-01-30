@@ -1,6 +1,6 @@
 <template>
   <section class="mod-intro">
-    <img src="~static/image/index-bg.png" alt="bg">
+    <img src="~static/image/index-bg.png" class="index-bg" alt="bg">
     <div class="tag tag-hk" ref="hk">
       <div class="popover popover-right popover-hk" ref="popover-hk">
         <h2>标签：TVB</h2>
@@ -8,7 +8,7 @@
         <p>呐，做人呢，最重要的是开心。</p>
       </div>
     </div>
-    <div class="title">Hello, I'm Xiong Wengang!</div>
+    <div class="title" ref="title">Hello, I'm Xiong Wengang!</div>
     <div class="scorpio tag tag-scorpio" ref="scorpio">
       <Scorpio></Scorpio>
       <div class="popover popover-right popover-scorpio" ref="popover-scorpio">
@@ -107,6 +107,13 @@
       }
     },
     mounted () {
+      let indexBg = document.querySelector('.index-bg')
+      let timer = setInterval(() => {
+        if (indexBg.complete) {
+          this.$bus.$emit('bg-loaded')
+          clearInterval(timer)
+        }
+      }, 50)
       this.setImageSize()
       this.handlerImageSize = () => {
         if (window.innerWidth > 1200) {
@@ -206,8 +213,8 @@
       @include triangle('right', 8px, rgba($white, 0.8))
     .scorpio
       position: absolute
-      top: 6%
-      left: 8%
+      top: 5%
+      left: 7%
     .boy
       position: absolute
       top: 32%

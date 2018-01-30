@@ -14,9 +14,6 @@
     name: 'LayoutMain',
     mounted () {
       this.contentAnimation()
-      this.$bus.$on('is-clicked', () => {
-        this.contentAnimation()
-      })
     },
     methods: {
       contentAnimation () {

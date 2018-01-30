@@ -1,5 +1,5 @@
 <template>
-  <section class="page page-index">
+  <section class="page page-index" :class="{ 'page-index-loading': loading }">
     <VHeader></VHeader>
     <Intro></Intro>
     <section class="main">
@@ -8,7 +8,7 @@
         <ul class="card-list">
           <li class="card" v-for="(item, index) in articleList" :key="index">
             <a :href="`/article/detail/${item._id}`" target="_blank" class="card-link">
-              <div class="img-wrap" :style="`background-image: url(//xiongwengang.xyz${item.cover})`"></div>
+              <div class="img-wrap" v-lazy:background-image="`//xiongwengang.xyz${item.cover}`"></div>
               <h3>{{ item.title }}</h3>
             </a>
           </li>
@@ -19,7 +19,7 @@
         <h2>项目</h2>
         <ul class="card-list">
           <li class="card" v-for="(item, index) in projectList" v-if="index < 3" :key="index">
-            <div class="img-wrap" :style="`background-image: url(//xiongwengang.xyz${item.cover})`"></div>
+            <div class="img-wrap" v-lazy:background-image="`//xiongwengang.xyz${item.cover}`"></div>
             <h3>{{ item.name }}</h3>
           </li>
         </ul>
@@ -27,6 +27,10 @@
       </div>
     </section>
     <VFooter></VFooter>
+    <div class="loading" v-if="loading">
+      <IndexLoading></IndexLoading>
+      <p class="text">总之岁月漫长，然而值得等待...</p>
+    </div>
   </section>
 </template>
 
@@ -34,13 +38,15 @@
   import VHeader from '~/components/Header'
   import Intro from '~/components/Intro'
   import VFooter from '~/components/Footer'
+  import IndexLoading from '~/components/IndexLoading'
   import axios from 'axios'
 
   export default {
     components: {
       VHeader,
       Intro,
-      VFooter
+      VFooter,
+      IndexLoading
     },
     asyncData ({ params, error }) {
       return axios.get(`http://admin.xiongwengang.xyz/api/blog/getIndex`).then((res) => {
@@ -51,6 +57,16 @@
       }).catch((e) => {
         error({ statusCode: 404, message: '接口请求报错！' })
       })
+    },
+    data () {
+      return {
+        loading: true
+      }
+    },
+    mounted () {
+      this.$bus.$on('bg-loaded', () => {
+        this.loading = false
+      })
     }
   }
 </script>
@@ -58,7 +74,24 @@
 <style lang="sass">
   @import '~assets/sassCore/_function.scss'
 
+  .page-index-loading
+    overflow: hidden
   .page-index
+    height: 100%
+    .loading
+      @include display-flex()
+      @include flex-direction(column)
+      @include justify-content(center)
+      @include align-items()
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background-color: #fff
+      z-index: 1000
+      .text
+        margin-top: 10px
     .main
       width: $minWidth
       @include center-block()

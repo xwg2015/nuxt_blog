@@ -1,14 +1,35 @@
 <template>
   <div class="mod-logo">
-    <canvas id="logo" width="170" height="50" style="width: 85px; height: 25px;"></canvas>
+    <canvas
+      :id="idName"
+      :width="opts[idName].width * 2"
+      :height="opts[idName].height * 2"
+      :style="{ width: opts[idName].width + 'px', height: opts[idName].height + 'px' }">
+    </canvas>
   </div>
 </template>
 
 <script>
   export default {
     name: 'Logo',
+    props: {
+      idName: {
+        type: String,
+        default: 'logo'
+      }
+    },
     data () {
       return {
+        opts: {
+          logo: {
+            width: 85,
+            height: 25
+          },
+          loading: {
+            width: 170,
+            height: 50
+          }
+        },
         x: [
           [1, 0, 0, 0, 1],
           [0, 1, 0, 1, 0],
@@ -55,8 +76,8 @@
     },
     mounted () {
       this.drawReact(this.x, 0)
-      this.drawReact(this.w, 60)
-      this.drawReact(this.g, 120)
+      this.drawReact(this.w, this.opts[this.idName].height * 2 + 10)
+      this.drawReact(this.g, (this.opts[this.idName].height * 2 + 10) * 2)
       requestAnimationFrame(this.init)
     },
     methods: {
@@ -64,20 +85,20 @@
         let progressTime = timestamp - this.lastTime
         if (progressTime > 500) {
           this.drawReact(this.x, 0)
-          this.drawReact(this.w, 60)
-          this.drawReact(this.g, 120)
+          this.drawReact(this.w, this.opts[this.idName].height * 2 + 10)
+          this.drawReact(this.g, (this.opts[this.idName].height * 2 + 10) * 2)
           this.lastTime = timestamp
         }
         requestAnimationFrame(this.init)
       },
       drawReact (ele, space) {
-        let c = document.getElementById('logo')
+        let c = document.getElementById(this.idName)
         let ctx = c.getContext('2d')
         for (let i = 0; i < ele.length; i++) {
           for (let j = 0; j < ele[i].length; j++) {
             if (ele[i][j]) {
               ctx.fillStyle = this.colorList[Math.floor(Math.random() * this.colorList.length)]
-              ctx.fillRect(10 * j + space, 10 * i, 8, 8)
+              ctx.fillRect(this.opts[this.idName].height / 5 * 2 * j + space, this.opts[this.idName].height / 5 * 2 * i, this.opts[this.idName].height / 5 * 2 - 2, this.opts[this.idName].height / 5 * 2 - 2)
             }
           }
         }

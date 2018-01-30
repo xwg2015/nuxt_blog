@@ -22,6 +22,7 @@
     "markdown-it": "^8.4.0",
     "mavon-editor": "^2.4.16",
     "nuxt": "^1.0.0-rc11",
+    "vue-lazyload": "^1.1.4",
     "vue-ripple-directive": "^2.0.1"
   },
   "devDependencies": {
