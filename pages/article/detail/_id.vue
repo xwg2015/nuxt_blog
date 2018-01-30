@@ -157,7 +157,6 @@
       border-bottom: 1px solid rgba($themeColor, 0.05)
     .cover
       height: $baseImgHeight * 12
-      background-image: url(~static/image/test.jpg)
       background-position: center
       background-size: cover
       border-radius: $baseRadius $baseRadius 0 0
