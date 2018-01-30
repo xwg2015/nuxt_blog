@@ -6,7 +6,7 @@ module.exports = {
     title: '熊文刚的个人博客',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'keywords', content: '熊文刚,个人博客,技术成长,前端工程师,全栈工程师,程序猿,英雄联盟,S7,精灵宝可梦,猫奴,直男,天蝎座,TVB,单身狗'},
       { hid: 'description', name: 'description', content: '个人博客，展示自我的平台。' }
     ],

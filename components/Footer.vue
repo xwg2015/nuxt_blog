@@ -8,7 +8,7 @@
         </span>
         <i class="iconfont icon-github"></i>
       </a>
-      <a href="mailto:xwg2015@eicloud.com"><i class="iconfont icon-email"></i></a>
+      <a href="mailto:xwg2015@icloud.com"><i class="iconfont icon-email"></i></a>
       <span class="weixin-wrap">
         <i class="iconfont icon-weixin"></i>
         <img class="qrcode" src="~static/image/weixin.png" alt="我的微信">
