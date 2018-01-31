@@ -8,7 +8,7 @@
         <p>呐，做人呢，最重要的是开心。</p>
       </div>
     </div>
-    <div class="title" ref="title">Hello, I'm Xiong Wengang!</div>
+    <div class="title" ref="title">Hello, I'm Wengang Xiong!</div>
     <div class="scorpio tag tag-scorpio" ref="scorpio">
       <Scorpio></Scorpio>
       <div class="popover popover-right popover-scorpio" ref="popover-scorpio">
