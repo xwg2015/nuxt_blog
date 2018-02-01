@@ -1,13 +1,23 @@
 <template>
   <div class="mod-logo">
-    <canvas
-      :id="idName"
-      :width="opts[idName].width * 2"
-      :height="opts[idName].height * 2"
-      :style="{ width: opts[idName].width + 'px', height: opts[idName].height + 'px' }">
-    </canvas>
+    <a href="/" class="link">
+      <canvas
+        :id="idName"
+        :width="opts[idName].width * 2"
+        :height="opts[idName].height * 2"
+        :style="{ width: opts[idName].width + 'px', height: opts[idName].height + 'px' }">
+      </canvas>
+    </a>
   </div>
 </template>
+
+<style lang="sass">
+  @import '~assets/sassCore/_function.scss'
+
+  .mod-logo
+    .link
+      display: block
+</style>
 
 <script>
   export default {

@@ -11,7 +11,7 @@
           <div class="tab-content">
             <ul class="article-list">
               <li class="mod-shadow article-item" v-for="item in list" :key="item._id">
-                <h3 class="title"><a :href="`/article/detail/${item._id}`" target="_blank">{{  item.title }}</a></h3>
+                <h3 class="title"><a :href="`/article/detail/${item._id}`">{{  item.title }}</a></h3>
                 <div class="about">
                   <p class="text">{{ item.about }}</p>
                   <div class="img" v-lazy:background-image="`//xiongwengang.xyz${item.cover}`"></div>

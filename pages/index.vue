@@ -7,13 +7,13 @@
         <h2>文章</h2>
         <ul class="card-list">
           <li class="card" v-for="(item, index) in articleList" :key="index">
-            <a :href="`/article/detail/${item._id}`" target="_blank" class="card-link">
+            <a :href="`/article/detail/${item._id}`" class="card-link">
               <div class="img-wrap" v-lazy:background-image="`//xiongwengang.xyz${item.cover}`"></div>
               <h3>{{ item.title }}</h3>
             </a>
           </li>
         </ul>
-        <a href="/article/technical" target="_blank" class="more" v-ripple>查看更多</a>
+        <a href="/article/technical" class="more" v-ripple>查看更多</a>
       </div>
       <div class="card-content project-content">
         <h2>项目</h2>
@@ -23,7 +23,7 @@
             <h3>{{ item.name }}</h3>
           </li>
         </ul>
-        <a href="/project/list" target="_blank" class="more" v-ripple>查看更多</a>
+        <a href="/project/list" class="more" v-ripple>查看更多</a>
       </div>
     </section>
     <VFooter></VFooter>
