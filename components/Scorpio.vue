@@ -89,7 +89,6 @@
       // alert(navigator.userAgent)
       if ((navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) || (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent))) {
       } else {
-        this.twinkle()
       }
     },
     methods: {
